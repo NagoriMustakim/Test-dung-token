@@ -75,7 +75,7 @@ function App() {
         projectId="4527f727647cf1d44ed39fab8ee2de68"
         ethereumClient={ethereumClient}
       />
-      <h1>Welcom to Dung Token</h1>
+      <h1 style={{ margin: "1.5rem" }}>Welcom to Dung Token</h1>
 
       <div className="btn">
 
@@ -83,7 +83,7 @@ function App() {
       </div>
       {/* <h1>Balance: {balance} MATIC</h1> */}
 
-      <a href='#' onClick={chess}>Chess</a>
+      <a href='#' onClick={chess}>Play Chess</a>
       <a href='#' onClick={page2}>page2</a>
     </>
   );

@@ -38,8 +38,11 @@
 a {
   text-decoration: none;
   margin: 2rem;
-  font-size: 1.5rem;
+  font-size: 2rem;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  color: rgb(236, 241, 151);
 }
+
 
 @keyframes App-logo-spin {
   from {
