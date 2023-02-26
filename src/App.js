@@ -46,24 +46,11 @@ function App() {
   //   getBalance();
   // }, [provider]);
   function chess() {
-    // if (!isConnected) {
-    //   alert("You have connect wallet First")
-    // }
-    if (balance > 1) {
-      let ans = prompt("You don't have enough balance, if you want to buy MATIC press yes")
-      if (ans.toLocaleLowerCase() == "yes") {
-        window.location.href = 'https://quickswap.exchange/#/swap?inputCurrency=0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee&outputCurrency=0x7d1afa7b718fb893db30a3abc0cfc608aacfebb0';
-      }
-    }
-    else {
-      window.location.href = "chess.html"
-    }
+    alert("Coming soon")
   }
   function page2() {
-    if (balance < 0.01) {
+    alert("Coming soon")
 
-    }
-    console.log("Going to page2");
   }
   return (
 
@@ -78,14 +65,15 @@ function App() {
         ethereumClient={ethereumClient}
       />
       <h1>Welcom to Dung Token</h1>
+
       <div className="btn">
 
         <Web3Button />
       </div>
       {/* <h1>Balance: {balance} MATIC</h1> */}
 
-      {/* <a href='#' onClick={chess}>Chess</a>
-      <a href='#' onClick={page2}>page2</a> */}
+      <a href='#' onClick={chess}>Chess</a>
+      <a href='#' onClick={page2}>page2</a>
 
     </>
   );
