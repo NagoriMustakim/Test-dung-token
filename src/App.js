@@ -1,6 +1,8 @@
 import logo from './logo.svg';
+
 import './App.css';
-// import { ethers } from 'ethers';
+import { ethers } from 'ethers';
+import { Chess } from './Games/Chess';
 import {
   EthereumClient,
   modalConnectors,
@@ -10,12 +12,12 @@ import { Web3Modal } from "@web3modal/react";
 import { Web3Button } from "@web3modal/react";
 import { configureChains, createClient, WagmiConfig } from "wagmi";
 
-import { polygon } from "wagmi/chains";
+import { polygon, polygonMumbai } from "wagmi/chains";
 import { useState, useEffect } from 'react';
 function App() {
   const [balance, setBalance] = useState(0);
   const [isConnected, setIsConnected] = useState(false);
-  const chains = [polygon];
+  const chains = [polygon, polygonMumbai];
 
   // Wagmi client
   const { provider } = configureChains(chains, [
@@ -35,21 +37,30 @@ function App() {
   // Web3Modal Ethereum Client
   const ethereumClient = new EthereumClient(wagmiClient, chains);
 
-  // useEffect(() => {
-  //   async function getBalance() {
-  //     if (provider && provider.selectedAddress) {
-  //       const providerWithNetwork = new ethers.providers.Web3Provider(provider);
-  //       const balance = await providerWithNetwork.getBalance(provider.selectedAddress);
-  //       setBalance(ethers.utils.formatEther(balance));s
-  //     }
-  //   }
-  //   getBalance();
-  // }, [provider]);
-  function chess() {
-    alert("Coming soon")
+  async function chess() {
+    const provider = new ethers.providers.Web3Provider(window.ethereum);
+    const accounts = await provider.send('eth_requestAccounts', []);
+    let bln = await provider.getBalance(accounts[0]);
+    console.log(accounts[0]);
+    bln = ethers.utils.formatEther(bln)
+    setBalance(bln)
+    console.log(balance);
+    if (balance < 0.001) {
+      let ans = prompt("You don't have enough balance, if you want to buy MATIC press yes")
+      if (ans.toLocaleLowerCase() == "yes") {
+        window.location.href = 'https://quickswap.exchange/#/swap?inputCurrency=0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee&outputCurrency=0x7d1afa7b718fb893db30a3abc0cfc608aacfebb0';
+      }
+
+    }
+    else {
+      let val = prompt("Enter the MATIC")
+      if (val >= 0.1) {
+        window.location.href = "https://dungtoken.vercel.app/chess.html"
+      }
+    }
   }
   function page2() {
-    alert("Coming soon")
+    window.location.href = "https://dungtoken.vercel.app/page2.html"
 
   }
   return (
@@ -74,7 +85,6 @@ function App() {
 
       <a href='#' onClick={chess}>Chess</a>
       <a href='#' onClick={page2}>page2</a>
-
     </>
   );
 }
