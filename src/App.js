@@ -38,17 +38,16 @@ function App() {
   const ethereumClient = new EthereumClient(wagmiClient, chains);
 
   async function chess() {
-    if (balance == null) {
-      const provider = new ethers.providers.Web3Provider(window.ethereum);
-      const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
-      const chainId = await window.ethereum.request({ method: 'eth_chainId' });
-      if (chainId !== '0x89') {
-        //alert('Incorrect network! Switch your metamask network to Rinkeby');
-        await window.ethereum.request({
-          method: 'wallet_switchEthereumChain',
-          params: [{ chainId: '0x89' }],
-        })
-      }
+
+    const provider = new ethers.providers.Web3Provider(window.ethereum);
+    const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
+    const chainId = await window.ethereum.request({ method: 'eth_chainId' });
+    if (chainId !== '0x89') {
+      //alert('Incorrect network! Switch your metamask network to Rinkeby');
+      await window.ethereum.request({
+        method: 'wallet_switchEthereumChain',
+        params: [{ chainId: '0x89' }],
+      })
       console.log(chainId);
       const signer = provider.getSigner();
       const address = await signer.getAddress();
@@ -73,16 +72,15 @@ function App() {
     }
   }
   async function page2() {
-    if (balance == null) {
-      const provider = new ethers.providers.Web3Provider(window.ethereum);
-      await window.ethereum.enable();
-      const signer = provider.getSigner();
-      const address = await signer.getAddress();
-      const balance = await provider.getBalance(address);
-      let bln = ethers.utils.formatEther(balance)
-      setBalance(bln)
-      console.log(bln);
-    }
+
+    const provider = new ethers.providers.Web3Provider(window.ethereum);
+    await window.ethereum.enable();
+    const signer = provider.getSigner();
+    const address = await signer.getAddress();
+    const balance = await provider.getBalance(address);
+    let bln = ethers.utils.formatEther(balance)
+    setBalance(bln)
+    console.log(bln);
     if (balance < 0.001) {
       let ans = prompt("You don't have enough balance, if you want to buy MATIC press yes")
       if (ans.toLocaleLowerCase() == "yes") {
