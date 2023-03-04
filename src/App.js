@@ -15,8 +15,8 @@ import { configureChains, createClient, WagmiConfig } from "wagmi";
 import { polygon, polygonMumbai } from "wagmi/chains";
 import { useState, useEffect } from 'react';
 function App() {
-  const [balance, setBalance] = useState(0);
-  const [isConnected, setIsConnected] = useState(false);
+  const [balance, setBalance] = useState(null);
+  const [isConnected, setIsConnected] = useState(true);
   const chains = [polygon, polygonMumbai];
 
   // Wagmi client
@@ -38,35 +38,45 @@ function App() {
   const ethereumClient = new EthereumClient(wagmiClient, chains);
 
   async function chess() {
-    const provider = new ethers.providers.Web3Provider(window.ethereum);
-    const accounts = await provider.send('eth_requestAccounts', []);
-    let bln = await provider.getBalance(accounts[0]);
-    console.log(accounts[0]);
-    bln = ethers.utils.formatEther(bln)
-    setBalance(bln)
-    console.log(balance);
-    if (balance < 0.001) {
-      let ans = prompt("You don't have enough balance, if you want to buy MATIC press yes")
-      if (ans.toLocaleLowerCase() == "yes") {
-        window.location.href = 'https://quickswap.exchange/#/swap?inputCurrency=0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee&outputCurrency=0x7d1afa7b718fb893db30a3abc0cfc608aacfebb0';
-      }
+    if (isConnected) {
+      const provider = new ethers.providers.Web3Provider(window.ethereum);
+      await window.ethereum.enable();
+      const signer = provider.getSigner();
+      const address = await signer.getAddress();
+      const balance = await provider.getBalance(address);
+      let bln = ethers.utils.formatEther(balance)
+      setBalance(bln)
+      console.log(bln);
+      if (balance < 0.001) {
 
+        let ans = prompt("You don't have enough balance, if you want to buy MATIC press yes")
+        if (ans.toLocaleLowerCase() == "yes") {
+          window.location.href = 'https://quickswap.exchange/#/swap?inputCurrency=0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee&outputCurrency=0x7d1afa7b718fb893db30a3abc0cfc608aacfebb0';
+        }
+
+      }
+      else {
+        let val = prompt("Enter the MATIC")
+        if (val >= 0.1) {
+          window.location.href = "https://dungtoken.vercel.app/chess.html"
+        }
+      }
     }
     else {
-      let val = prompt("Enter the MATIC")
-      if (val >= 0.1) {
-        window.location.href = "https://dungtoken.vercel.app/chess.html"
-      }
+      alert("Connect wallet first");
     }
   }
   async function page2() {
-    const provider = new ethers.providers.Web3Provider(window.ethereum);
-    const accounts = await provider.send('eth_requestAccounts', []);
-    let bln = await provider.getBalance(accounts[0]);
-    console.log(accounts[0]);
-    bln = ethers.utils.formatEther(bln)
-    setBalance(bln)
-    console.log(balance);
+    if (balance == null) {
+      const provider = new ethers.providers.Web3Provider(window.ethereum);
+      await window.ethereum.enable();
+      const signer = provider.getSigner();
+      const address = await signer.getAddress();
+      const balance = await provider.getBalance(address);
+      let bln = ethers.utils.formatEther(balance)
+      setBalance(bln)
+      console.log(bln);
+    }
     if (balance < 0.001) {
       let ans = prompt("You don't have enough balance, if you want to buy MATIC press yes")
       if (ans.toLocaleLowerCase() == "yes") {
@@ -81,6 +91,9 @@ function App() {
       }
     }
 
+  }
+  const connect = () => {
+    setIsConnected(true)
   }
   return (
 
@@ -98,7 +111,7 @@ function App() {
 
       <div className="btn">
 
-        <Web3Button />
+        <Web3Button></Web3Button>
       </div>
       {/* <h1>Balance: {balance} MATIC</h1> */}
 
