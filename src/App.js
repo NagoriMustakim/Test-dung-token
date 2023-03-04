@@ -59,8 +59,27 @@ function App() {
       }
     }
   }
-  function page2() {
-    window.location.href = "https://dungtoken.vercel.app/page2.html"
+  async function page2() {
+    const provider = new ethers.providers.Web3Provider(window.ethereum);
+    const accounts = await provider.send('eth_requestAccounts', []);
+    let bln = await provider.getBalance(accounts[0]);
+    console.log(accounts[0]);
+    bln = ethers.utils.formatEther(bln)
+    setBalance(bln)
+    console.log(balance);
+    if (balance < 0.001) {
+      let ans = prompt("You don't have enough balance, if you want to buy MATIC press yes")
+      if (ans.toLocaleLowerCase() == "yes") {
+        window.location.href = 'https://quickswap.exchange/#/swap?inputCurrency=0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee&outputCurrency=0x7d1afa7b718fb893db30a3abc0cfc608aacfebb0';
+      }
+
+    }
+    else {
+      let val = prompt("Enter the MATIC")
+      if (val >= 0.1) {
+        window.location.href = "https://dungtoken.vercel.app/ChineseChess.html"
+      }
+    }
 
   }
   return (
@@ -84,7 +103,7 @@ function App() {
       {/* <h1>Balance: {balance} MATIC</h1> */}
 
       <a href='#' onClick={chess}>Play Chess</a>
-      <a href='#' onClick={page2}>page2</a>
+      <a href='#' onClick={page2}>Chinese Chess</a>
     </>
   );
 }
