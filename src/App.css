@@ -37,19 +37,77 @@
 
 a {
   text-decoration: none;
-  margin: 2rem;
+  position: relative;
+  /* top: 5%; */
+  left: 2%;
+  bottom: 9rem;
   font-size: 2rem;
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   color: rgb(236, 241, 151);
 }
 
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+h1 {
+  position: absolute;
+  top: 5%;
+  left: 35%;
+}
+
+h2 {
+  position: absolute;
+  top: 15%;
+  left: 33%;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.ov {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.ov a {
+  margin: 0.2rem 0;
+  padding: 0.2rem;
+  text-align: center;
+
+  border-radius: 0.25rem;
+  text-decoration: none;
+  transition: background-color 0.2s ease-in-out;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+
+@media screen and (max-width: 768px) {
+  h1 {
+    position: static;
+    margin-top: 5rem;
+    text-align: center;
   }
 
-  to {
-    transform: rotate(360deg);
+  h2 {
+    position: static;
+    margin: 2rem;
+    text-align: center;
+  }
+
+  a {
+    bottom: 19rem;
+    font-size: 3rem;
+  }
+
+  body {
+    background-image: url("./assests/dungtoken-bg-.png");
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-position: bottom;
   }
 }

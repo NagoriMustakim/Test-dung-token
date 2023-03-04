@@ -2,7 +2,7 @@ import logo from './logo.svg';
 
 import './App.css';
 import { ethers } from 'ethers';
-import { Chess } from './Games/Chess';
+
 import {
   EthereumClient,
   modalConnectors,
@@ -15,6 +15,7 @@ import { configureChains, createClient, WagmiConfig } from "wagmi";
 import { polygon } from "wagmi/chains";
 import { useState, useEffect } from 'react';
 function App() {
+
   const [balance, setBalance] = useState(null);
   const [isConnected, setIsConnected] = useState(true);
   const chains = [polygon];
@@ -102,16 +103,19 @@ function App() {
         projectId="4527f727647cf1d44ed39fab8ee2de68"
         ethereumClient={ethereumClient}
       />
-      <h1 style={{ margin: "1.5rem" }}>Welcom to Dung Token</h1>
-
+      <h1>Welcome to DungToken Games</h1>
+      <h2>You need to HODL Matic Token in your wallet to play</h2>
       <div className="btn">
 
         <Web3Button></Web3Button>
       </div>
-      {/* <h1>Balance: {balance} MATIC</h1> */}
+      <div class="container">
+        <div class="ov">
+          <a className="a1" href='#' onClick={chess}>Play Chess</a>
+          <a className="a2" href='#' onClick={page2}>Play Chinese Chess</a>
 
-      <a href='#' onClick={chess}>Play Chess</a>
-      <a href='#' onClick={page2}>Chinese Chess</a>
+        </div>
+      </div>
     </>
   );
 }
