@@ -13,11 +13,9 @@ import { Web3Button } from "@web3modal/react";
 import { configureChains, createClient, WagmiConfig } from "wagmi";
 
 import { polygon } from "wagmi/chains";
-import { useState, useEffect } from 'react';
-function App() {
+import { ChinessChess } from './ChinessChess';
 
-  const [balance, setBalance] = useState(null);
-  const [isConnected, setIsConnected] = useState(true);
+function App() {
   const chains = [polygon];
 
   // Wagmi client
@@ -48,13 +46,11 @@ function App() {
         params: [{ chainId: '0x89' }],
       })
     }
-    console.log(chainId);
+
     const signer = provider.getSigner();
     const address = await signer.getAddress();
     const balance = await provider.getBalance(address);
     let bln = ethers.utils.formatEther(balance)
-    setBalance(bln)
-    console.log(bln);
 
     if (balance < 0.001) {
 
@@ -65,18 +61,23 @@ function App() {
 
     }
     else {
-      window.location.href = "https://dungtoken.vercel.app/chess.html"
+      window.location.href = "http://chess.dungtoken.com:8080/"
     }
   }
-  async function page2() {
+  async function chinessChess() {
     const provider = new ethers.providers.Web3Provider(window.ethereum);
     await window.ethereum.enable();
+    const chainId = await window.ethereum.request({ method: 'eth_chainId' });
+    if (chainId !== '0x89') {
+      await window.ethereum.request({
+        method: 'wallet_switchEthereumChain',
+        params: [{ chainId: '0x89' }],
+      })
+    }
     const signer = provider.getSigner();
     const address = await signer.getAddress();
     const balance = await provider.getBalance(address);
     let bln = ethers.utils.formatEther(balance)
-    setBalance(bln)
-    console.log(bln);
 
     if (balance < 0.001) {
       let ans = prompt("You don't have enough balance, if you want to buy MATIC press yes")
@@ -112,7 +113,7 @@ function App() {
       <div class="container">
         <div class="ov">
           <a className="a1" href='#' onClick={chess}>Play Chess</a>
-          <a className="a2" href='#' onClick={page2}>Play Chinese Chess</a>
+          <a className="a2" href='#' onClick={chinessChess}>Play Chinese Chess</a>
 
         </div>
       </div>
