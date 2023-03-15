@@ -13,12 +13,9 @@ import { polygon } from "wagmi/chains";
 import { useState } from 'react';
 
 function App() {
-  const { isConnected } = useAccount()
-  // const [isConnected, setIsConnected] = useState(false)
+
   const chains = [polygon];
-  const connect = () => {
-    // setIsConnected(true)
-  }
+
   // Wagmi client
   const { provider } = configureChains(chains, [
     walletConnectProvider({ projectId: "4527f727647cf1d44ed39fab8ee2de68" }),
@@ -38,71 +35,64 @@ function App() {
   const ethereumClient = new EthereumClient(wagmiClient, chains);
 
   async function chess() {
-    if (isConnected) {
-      const provider = new ethers.providers.Web3Provider(window.ethereum);
-      const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
-      const chainId = await window.ethereum.request({ method: 'eth_chainId' });
-      if (chainId !== '0x89') {
-        await window.ethereum.request({
-          method: 'wallet_switchEthereumChain',
-          params: [{ chainId: '0x89' }],
-        })
+
+    const provider = new ethers.providers.Web3Provider(window.ethereum);
+    const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
+    const chainId = await window.ethereum.request({ method: 'eth_chainId' });
+    if (chainId !== '0x89') {
+      await window.ethereum.request({
+        method: 'wallet_switchEthereumChain',
+        params: [{ chainId: '0x89' }],
+      })
+    }
+
+    const signer = provider.getSigner();
+    const address = await signer.getAddress();
+    const balance = await provider.getBalance(address);
+    let bln = ethers.utils.formatEther(balance)
+
+    if (bln < 0.001) {
+
+      let ans = prompt("You don't have enough balance, if you want to buy MATIC press yes")
+      if (ans.toLocaleLowerCase() == "yes") {
+        window.location.href = 'https://quickswap.exchange/#/swap?inputCurrency=0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee&outputCurrency=0x7d1afa7b718fb893db30a3abc0cfc608aacfebb0';
       }
 
-      const signer = provider.getSigner();
-      const address = await signer.getAddress();
-      const balance = await provider.getBalance(address);
-      let bln = ethers.utils.formatEther(balance)
-
-      if (bln < 0.001) {
-
-        let ans = prompt("You don't have enough balance, if you want to buy MATIC press yes")
-        if (ans.toLocaleLowerCase() == "yes") {
-          window.location.href = 'https://quickswap.exchange/#/swap?inputCurrency=0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee&outputCurrency=0x7d1afa7b718fb893db30a3abc0cfc608aacfebb0';
-        }
-
-      }
-      else {
-        window.location.href = "http://chess.dungtoken.com:8080/"
-      }
     }
     else {
-      alert("Connect your wallet")
+      window.location.href = "http://chess.dungtoken.com:8080/"
     }
+
   }
 
   async function chinessChess() {
-    if (isConnected) {
-      const provider = new ethers.providers.Web3Provider(window.ethereum);
-      await window.ethereum.enable();
-      const chainId = await window.ethereum.request({ method: 'eth_chainId' });
-      if (chainId !== '0x89') {
-        await window.ethereum.request({
-          method: 'wallet_switchEthereumChain',
-          params: [{ chainId: '0x89' }],
-        })
-      }
-      const signer = provider.getSigner();
-      const address = await signer.getAddress();
-      const balance = await provider.getBalance(address);
-      let bln = ethers.utils.formatEther(balance)
 
-      if (bln < 0.001) {
-        let ans = prompt("You don't have enough balance, if you want to buy MATIC press yes")
-        if (ans.toLocaleLowerCase() == "yes") {
-          window.location.href = 'https://quickswap.exchange/#/swap?inputCurrency=0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee&outputCurrency=0x7d1afa7b718fb893db30a3abc0cfc608aacfebb0';
-        }
+    const provider = new ethers.providers.Web3Provider(window.ethereum);
+    await window.ethereum.enable();
+    const chainId = await window.ethereum.request({ method: 'eth_chainId' });
+    if (chainId !== '0x89') {
+      await window.ethereum.request({
+        method: 'wallet_switchEthereumChain',
+        params: [{ chainId: '0x89' }],
+      })
+    }
+    const signer = provider.getSigner();
+    const address = await signer.getAddress();
+    const balance = await provider.getBalance(address);
+    let bln = ethers.utils.formatEther(balance)
 
+    if (bln < 0.001) {
+      let ans = prompt("You don't have enough balance, if you want to buy MATIC press yes")
+      if (ans.toLocaleLowerCase() == "yes") {
+        window.location.href = 'https://quickswap.exchange/#/swap?inputCurrency=0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee&outputCurrency=0x7d1afa7b718fb893db30a3abc0cfc608aacfebb0';
       }
-      else {
-        window.location.href = "https://dungtoken.vercel.app/ChineseChess.html"
-      }
+
     }
     else {
-      alert("Connect your wallet")
+      window.location.href = "https://dungtoken.vercel.app/ChineseChess.html"
     }
-
   }
+
 
   return (
 
@@ -126,11 +116,11 @@ function App() {
         <div className="ov">
           <a className="a1" href='#' onClick={chess}>Play Chess</a>
           <a className="a2" href='#' onClick={chinessChess}>Play Chinese Chess</a>
-          {console.log(isConnected)}
         </div>
       </div>
     </>
   );
-}
 
+
+}
 export default App;
