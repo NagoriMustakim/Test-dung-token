@@ -54,11 +54,13 @@
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: stretch;
-  margin: 3rem;
+  margin: 1rem;
   display: grid;
   color: #4c0bf0;
   gap: 4.2rem;
   grid-template-columns: 1fr 1fr;
+  max-width: fit-content;
+  margin-left: 9rem;
 }
 
 .column {
@@ -75,7 +77,7 @@
   font-size: 2rem;
 }
 
-.column h2 {
+.column h4 {
   margin-left: 4rem;
   margin-top: 4rem;
   cursor: pointer;
@@ -111,6 +113,18 @@ a {
   .column h2 {
     margin-left: 2rem;
   }
+
+  .column img {
+    display: none;
+  }
+
+}
+@media screen and (max-width: 1020px) {
+  #columns {
+    gap: 0.5rem;
+  }
+
+ 
 
   .column img {
     display: none;

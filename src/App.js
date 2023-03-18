@@ -8,17 +8,8 @@ import {
 import { Web3Modal } from "@web3modal/react";
 import { Web3Button } from "@web3modal/react";
 import { configureChains, createClient, WagmiConfig } from "wagmi";
-import { useAccount } from "wagmi"
 import { polygon } from "wagmi/chains";
-import { useState } from 'react';
 
-function cchess() {
-  return (
-    <div>
-      <iframe src="./cchess/index.html" width="100%" height="500px" />
-    </div>
-  )
-}
 function App() {
 
   const chains = [polygon];
@@ -96,7 +87,7 @@ function App() {
 
     }
     else {
-      window.location.href = "https://dungtoken.vercel.app/ChineseChess.html"
+      window.location.href = "https://dungtoken.vercel.app/cchess/index.html"
     }
   }
 
@@ -114,7 +105,7 @@ function App() {
       />
       <div className='flex items-center ml-8 mt-8'>
         <div className="font-bold flex gap-1 items-center text-2xl xl:text-4xl text-white ">
-          <img src={require("./assests/DungToken Logo.jpg")} className="tablet:h-20 h-12"></img>
+          <a href='https://dungtoken.com'> <img src={require("./assests/DungToken Logo.jpg")} className="tablet:h-20 h-12"></img></a>
           DungToken
         </div>
       </div>
@@ -131,11 +122,11 @@ function App() {
       <div id="columns">
         <div className='column'>
           <img src={require("./chesshomepage/Chesss.JPG")}></img>
-          <h2 onClick={chess}>Play Chess</h2>
+          <h4 onClick={chess}>Play Chess</h4>
         </div>
         <div className='column'>
-          <img style={{ height: "180px", width: "180px", borderRadius: "1rem" }} src={require("./chesshomepage/Xiangqi Logo.JPG")}></img>
-          <h2 onClick={chinessChess}>Play XiangQi</h2>
+          <img style={{ height: "150px", width: "150px", borderRadius: "1rem" }} src={require("./chesshomepage/Xiangqi Logo.JPG")}></img>
+          <h4 onClick={chinessChess}>Play XiangQi</h4>
         </div>
       </div >
 
