@@ -96,7 +96,7 @@ function App() {
 
     }
     else {
-      <cchess />
+      window.location.href = "https://dungtoken.vercel.app/ChineseChess.html"
     }
   }
 
