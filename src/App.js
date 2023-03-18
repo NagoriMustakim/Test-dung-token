@@ -12,6 +12,13 @@ import { useAccount } from "wagmi"
 import { polygon } from "wagmi/chains";
 import { useState } from 'react';
 
+function cchess() {
+  return (
+    <div>
+      <iframe src="./cchess/index.html" width="100%" height="500px" />
+    </div>
+  )
+}
 function App() {
 
   const chains = [polygon];
@@ -53,7 +60,7 @@ function App() {
 
     if (bln < 0.001) {
 
-      let ans = prompt("You don't have enough balance, if you want to buy MATIC press yes")
+      let ans = prompt("You don't have enough balance, if you want to buy MATIC enter yes")
       if (ans.toLocaleLowerCase() == "yes") {
         window.location.href = 'https://quickswap.exchange/#/swap?inputCurrency=0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee&outputCurrency=0x7d1afa7b718fb893db30a3abc0cfc608aacfebb0';
       }
@@ -89,14 +96,14 @@ function App() {
 
     }
     else {
-      window.location.href = "https://dungtoken.vercel.app/ChineseChess.html"
+      <cchess />
     }
   }
 
 
   return (
 
-    <>
+    <div>
       <WagmiConfig client={wagmiClient}>
 
       </WagmiConfig>
@@ -105,20 +112,36 @@ function App() {
         projectId="4527f727647cf1d44ed39fab8ee2de68"
         ethereumClient={ethereumClient}
       />
-      <h1>Welcome to DungToken Games</h1>
-      <h2>You need to HODL Matic Token in your wallet to play</h2>
+      <div className='flex items-center ml-8 mt-8'>
+        <div className="font-bold flex gap-1 items-center text-2xl xl:text-4xl text-white ">
+          <img src={require("./assests/DungToken Logo.jpg")} className="tablet:h-20 h-12"></img>
+          DungToken
+        </div>
+      </div>
+      <div id="banner">
+        <h1>Welcome-Shall we play a game?</h1>
+        <p>You need to HODL Matic to play our games.</p>
+      </div>
       <div className="btn">
 
         <Web3Button>
         </Web3Button>
       </div>
-      <div className="container">
-        <div className="ov">
-          <a className="a1" href='#' onClick={chess}>Play Chess</a>
-          <a className="a2" href='#' onClick={chinessChess}>Play Chinese Chess</a>
+
+      <div id="columns">
+        <div className='column'>
+          <img src={require("./chesshomepage/Chesss.JPG")}></img>
+          <h2 onClick={chess}>Play Chess</h2>
         </div>
-      </div>
-    </>
+        <div className='column'>
+          <img style={{ height: "180px", width: "180px", borderRadius: "1rem" }} src={require("./chesshomepage/Xiangqi Logo.JPG")}></img>
+          <h2 onClick={chinessChess}>Play XiangQi</h2>
+        </div>
+      </div >
+
+
+
+    </div >
   );
 
 
