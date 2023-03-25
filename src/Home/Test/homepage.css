@@ -1,3 +1,8 @@
+a {
+    color: blue;
+    text-decoration: none;
+}
+
 .container {
     display: flex;
     flex-wrap: wrap;
@@ -5,6 +10,15 @@
     align-items: center;
     height: 100vh;
 }
+#banner {
+    background-color: #333;
+    color: #fff;
+    font-size: 1.3rem;
+    padding: 10px;
+    text-align: center;
+    margin-top: 2rem;
+  
+  }
 
 .polygon {
     width: 150px;
@@ -12,20 +26,19 @@
     position: relative;
     margin: 20px;
     overflow: hidden;
-    background-color: #efecec;
+    background-color: #ccc;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     color: #fff;
-    font-size: 3rem;
+    font-size: 2rem;
     font-weight: bold;
     text-align: center;
     text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
     cursor: pointer;
     transition: all 0.3s ease-in-out;
 }
-
 
 .polygon:hover {
     transform: scale(1.2);
@@ -39,7 +52,7 @@
     height: 100%;
     top: 0;
     left: 0;
-    background-image: url('https://via.placeholder.com/150');
+    background-image: url('https://chess.dungtoken.com/test/DungToken_Logo.jpg');
     background-size: cover;
     background-position: center center;
     opacity: 0.5;

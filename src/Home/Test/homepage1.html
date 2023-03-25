@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+     
+
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>DungToken Chess Games</title>
+	<style>
+ 
+
+a {
+  color: blue;
+  text-decoration: none;
+}
+		.container {
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: center;
+			align-items: center;
+			height: 100vh;
+		}
+
+		.polygon {
+			width: 150px;
+			height: 150px;
+			position: relative;
+			margin: 20px;
+			overflow: hidden;
+			background-color: #ccc;
+			border-radius: 50%;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			color: #fff;
+			font-size: 2rem;
+			font-weight: bold;
+			text-align: center;
+			text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+			cursor: pointer;
+			transition: all 0.3s ease-in-out;
+		}
+
+		.polygon:hover {
+			transform: scale(1.2);
+			box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+		}
+
+		.polygon:before {
+			content: '';
+			position: absolute;
+			width: 100%;
+			height: 100%;
+			top: 0;
+			left: 0;
+			background-image: url('https://chess.dungtoken.com/test/DungToken_Logo.jpg');
+			background-size: cover;
+			background-position: center center;
+			opacity: 0.5;
+			transition: all 0.3s ease-in-out;
+		}
+
+		.polygon:hover:before {
+			opacity: 1;
+		}
+
+		@media (max-width: 767px) {
+			.polygon {
+				width: 100%;
+				margin: 10px 0;
+			}
+		}
+	</style>
+</head>
+<body>
+<div>
+  <a href="https://www.example.com">
+    <img src="dungtokenlogo.jpg" alt="Example Company Logo"></a>&nbsp;DungToken Chess Games
+</div>
+	<div class="container">
+		<div class="polygon">
+<img src="chess.jpg" alt="Image Description">
+  <a href="http://chess.dungtoken.com:8080" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">Chess</a>
+			</div>
+<div class="polygon">			
+<img src="xiangqi.jpg" alt="Image Description">
+  <a href="http://chess.dungtoken.com/cchess" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">XiangQi</a>
+		</div>
+		<div class="polygon">
+			Chat-GPT Coming Soon
+		</div>
+		<div class="polygon">
+			2D Coming Soon
+		</div>
+		<div class="polygon">
+			3D Coming Soon
+		</div>
+		<div class="polygon">
+			Metaverse Coming Soon
+		</div>
+	</div>
+
+	<script>
+		const polygons = document.querySelectorAll('.polygon');
+		let currentIndex = 0;
+
+		function swapPolygons() {
+			polygons[currentIndex].classList.remove('active');
+			currentIndex = (currentIndex + 1) % polygons.length;
+			polygons[currentIndex].classList.add('active');
+		}
+		setInterval(swapPolygons, 3000);
+	</script>
+
+
+
+</body>
+</html>
+
+
+
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>My Website</title>
+    <style>
+      /* CSS to adjust the image size and position */
+      img {
+        width: 100px; /* adjust the width as needed */
+        height: auto; /* maintain the aspect ratio */
+        position: absolute; /* position the image absolutely */
+        top: 10px; /* adjust the top position as needed */
+        left: 10px; /* adjust the left position as needed */
+      }
+    </style>
+  </head>
+  <body>
+   Hello &nbsp;Hi
+  </body>
+</html>
+
