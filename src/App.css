@@ -8,6 +8,15 @@
 }
 
 
+body {
+  /* background-image: url("./assests/dungtoken-bg-.png"); */
+  background-repeat: no-repeat;
+  background-size: 40%;
+  background-position: bottom;
+  background-color: rgb(236, 131, 131);
+
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
@@ -119,12 +128,13 @@ a {
   }
 
 }
+
 @media screen and (max-width: 1020px) {
   #columns {
     gap: 0.5rem;
   }
 
- 
+
 
   .column img {
     display: none;

@@ -9,18 +9,9 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: linear-gradient(to bottom, #f86f6f, #f5afaf);
-  
-}
-
-body {
-  background-image: url("./assests/dungtoken-bg-.png");
-  background-repeat: no-repeat;
-  background-size: 40%;
-  background-position: bottom;
-  /* background-color: rgb(236, 131, 131); */
 
 }
+
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
