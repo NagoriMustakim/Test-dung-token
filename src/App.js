@@ -2,19 +2,20 @@ import {
   BrowserRouter as Router,
   Routes,
   Route,
-  Link
+
+  BrowserRouter
 } from 'react-router-dom';
 import Homepage1 from './home/test/Homepage1';
-
 function App() {
   return (
-    <Router>
-      <div >
-        <Routes>
-          <Route exact path='/home/test/homepage1.html' element={< Homepage1 />}></Route>
-        </Routes>
-      </div>
-    </Router>
+ 
+      <Router>
+        <div >
+          <Routes>
+            <Route path="/home/test/Homepage1.html" element={< Homepage1 />}></Route>
+          </Routes>
+        </div>
+      </Router>
   );
 
 
