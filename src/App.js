@@ -3,7 +3,7 @@ import {
   Route,
   BrowserRouter
 } from 'react-router-dom';
-import Homepage1 from './home/test/Homepage1';
+import {Homepage1} from './home/test/Homepage1';
 function App() {
   return (
       <BrowserRouter>
