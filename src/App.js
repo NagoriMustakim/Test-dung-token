@@ -1,22 +1,17 @@
-import {
-  Routes,
-  Route,
-  BrowserRouter
-} from 'react-router-dom';
-import { Homepage1 } from './home/test/Homepage1';
-import { Test } from './Component/Test';
-function App() {
+import React from 'react'
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import Test from './Component/Test'
+import Homepage1 from './home/test/Homepage1'
+
+const App = () => {
   return (
     <BrowserRouter>
-      <div >
-        <Routes>
-          <Route path="/" element={< Test />}></Route>
-          <Route path="home/test/homepage1.html" element={< Homepage1 />}></Route>
-        </Routes>
-      </div>
+      <Routes>
+        <Route path='/' element={<Test />}></Route>
+        <Route path='/home/test/homepage1.html' element={<Homepage1 />}></Route>
+      </Routes>
     </BrowserRouter>
-  );
-
-
+  )
 }
-export default App;
+
+export default App

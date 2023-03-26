@@ -2,13 +2,13 @@ import React from 'react'
 import "./homepage.css"
 import WalletConnect from './WalletConnect';
 import { ethers } from 'ethers';
-export const Homepage1 = () => {
+const Homepage1 = () => {
     const polygons = document.querySelectorAll('.polygon');
     let currentIndex = 0;
 
     function swapPolygons() {
         polygons[currentIndex].classList.remove('active');
-        currentIndex = (currentIndex + 1) % polygons.length;
+        currentIndex = (currentIndex + 1) % polygons.length; 
         polygons[currentIndex].classList.add('active');
     }
 
@@ -97,7 +97,7 @@ export const Homepage1 = () => {
                         }}>Chess</a>
                     </div>
                 </ div>
-
+                
                 <div class="polygon_2" onClick={chinessChess}>
                     <img src={require("../test/xiangqi.jpg")} alt="Image Description" />
                     <a style={{
@@ -124,3 +124,5 @@ export const Homepage1 = () => {
         </div>
     )
 }
+
+export default Homepage1

@@ -1,7 +1,9 @@
 import React from 'react'
 
-export const Test = () => {
+const Test = () => {
     return (
-        <h1 style={{ color: "white" }}>Test</h1>
+        <h1>Test</h1>
     )
 }
+
+export default Test
