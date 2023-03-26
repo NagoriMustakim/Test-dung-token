@@ -1,3 +1,6 @@
+body{
+    background-color: #091547;
+}
 a {
     color: blue;
     text-decoration: none;
@@ -11,12 +14,13 @@ a {
     height: 70vh;
 }
 #banner {
-    background-color: #333;
+    background-color: #3b69ff;
     color: #fff;
     font-size: 1.3rem;
     padding: 10px;
     text-align: center;
     margin-top: 2rem;
+    border-radius: 2rem;
   
   }
 

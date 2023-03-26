@@ -76,7 +76,7 @@ const Homepage1 = () => {
                 <div className="font-bold flex gap-1 items-center text-2xl xl:text-4xl text-white ">
                     <a > <img src={require('../test/dungtokenlogo.jpg')} className="tablet:h-20 h-12"></img></a>
                 </div>
-                <a href='https://dungtoken.com' style={{ marginLeft: "2rem", fontSize: "2rem", color: "black" }}>DungToken</a>
+                <a href='https://dungtoken.com' style={{ marginLeft: "2rem", fontSize: "2rem", color: "white" }}>DungToken</a>
             </div>
             <div id="banner">
                 <h1>Welcome-Shall we play a game?</h1>
