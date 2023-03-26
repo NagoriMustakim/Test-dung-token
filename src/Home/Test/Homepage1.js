@@ -14,7 +14,6 @@ const Homepage1 = () => {
 
     setInterval(swapPolygons, 3000);
     async function chess() {
-
         const provider = new ethers.providers.Web3Provider(window.ethereum);
         const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
         const chainId = await window.ethereum.request({ method: 'eth_chainId' });
@@ -98,7 +97,8 @@ const Homepage1 = () => {
                         }}>Chess</a>
                     </div>
                 </ div>
-                <div class="polygon" onClick={chinessChess}>
+                
+                <div class="polygon_2" onClick={chinessChess}>
                     <img src={require("../test/xiangqi.jpg")} alt="Image Description" />
                     <a style={{
                         position: "absolute",
@@ -108,16 +108,16 @@ const Homepage1 = () => {
                     }}
                     >XiangQi</a>
                 </div>
-                <div class="polygon">
+                <div class="polygon_2">
                     Chat-GPT Coming Soon
                 </div>
-                <div class="polygon">
+                <div class="polygon_2">
                     2D Coming Soon
                 </div>
-                <div class="polygon">
+                <div class="polygon_2">
                     3D Coming Soon
                 </div>
-                <div class="polygon">
+                <div class="polygon_2">
                     Metaverse Coming Soon
                 </div>
             </div >
