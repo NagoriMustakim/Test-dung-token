@@ -74,7 +74,7 @@ const Homepage1 = () => {
         <div>
             <div className='flex items-center ml-8 mt-8'>
                 <div className="font-bold flex gap-1 items-center text-2xl xl:text-4xl text-white ">
-                    <a > <img src={require('../test/dungtokenlogo.jpg')} className="tablet:h-20 h-12"></img></a>
+                    <a > <img src={require('../Test/dungtokenlogo.jpg')} className="tablet:h-20 h-12"></img></a>
                 </div>
                 <a href='https://dungtoken.com' style={{ marginLeft: "2rem", fontSize: "2rem", color: "white" }}>DungToken</a>
             </div>
@@ -88,7 +88,7 @@ const Homepage1 = () => {
             < div class="container" >
                 <div>
                     <div class="polygon" onClick={chess}>
-                        <img src={require("../test/chess.jpg")} alt="Image Description" />
+                        <img src={require("../Test/chess.jpg")} alt="Image Description" />
                         <a style={{
                             position: "absolute",
                             top: "50%",
@@ -99,7 +99,7 @@ const Homepage1 = () => {
                 </ div>
                 
                 <div class="polygon_2" onClick={chinessChess}>
-                    <img src={require("../test/xiangqi.jpg")} alt="Image Description" />
+                    <img src={require("../Test/xiangqi.jpg")} alt="Image Description" />
                     <a style={{
                         position: "absolute",
                         top: "50%",
