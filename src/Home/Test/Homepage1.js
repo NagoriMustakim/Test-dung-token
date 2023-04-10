@@ -67,7 +67,7 @@ const Homepage1 = () => {
 
         }
         else {
-            window.location.href = "http://chess.dungtoken.com/cchess"
+            window.location.href = "/game"
         }
     }
     return (
